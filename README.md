@@ -9,12 +9,12 @@
 
 #### HomeScreen
 
-[HomeScreen Photo](./doc/homescreen.png)
+![HomeScreen Photo](./doc/homescreen.png)
 
 #### Pending And Done Todo Tab
 
-[Pending and Done Photo](./doc/pending_and_done_tab.png)
+![Pending and Done Photo](./doc/pending_and_done_tab.png)
 
 #### Add Todo Modal
 
-[Add Todo Modal Photo](./doc/add_todo_modal.png)
+![Add Todo Modal Photo](./doc/add_todo_modal.png)
