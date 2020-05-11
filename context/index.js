@@ -1,54 +1,49 @@
-import React, { Component, createContext } from 'react';
+import React, { useState, createContext } from 'react';
 import shortid from 'shortid';
 
-import { todos } from './todos';
+import { todos as defaultTodos } from './todos';
 
 export const TodoContext = createContext();
 
-class TodoProvider extends Component {
-  state = {
-    todos,
-  };
+const TodoProvider = ({ children }) => {
+  const [todos, setTodos] = useState(defaultTodos);
 
-  toggleCheckBox = (id) => {
-    const newTodos = this.state.todos.map((todo) => {
+  const toggleCheckBox = (id) => {
+    const newTodos = todos.map((todo) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
         return todo;
       }
       return todo;
     });
-    this.setState({ todos: newTodos });
+    setTodos(newTodos);
   };
 
-  addNewTodo = (title) => {
-    const todos = [
-      ...this.state.todos,
+  const addNewTodo = (title) => {
+    const newTodos = [
+      ...todos,
       {
         title,
         id: shortid.generate(),
         completed: false,
       },
     ];
-    this.setState({ todos });
+    setTodos(newTodos);
   };
 
-  render() {
-    const { todos } = this.state;
-    return (
-      <TodoContext.Provider
-        value={{
-          todos,
-          completedTodos: todos.filter((todo) => todo.completed),
-          pendingTodos: todos.filter((todo) => !todo.completed),
-          toggleCheckBox: this.toggleCheckBox,
-          addNewTodo: this.addNewTodo,
-        }}
-      >
-        {this.props.children}
-      </TodoContext.Provider>
-    );
-  }
-}
+  return (
+    <TodoContext.Provider
+      value={{
+        todos,
+        completedTodos: todos.filter((todo) => todo.completed),
+        pendingTodos: todos.filter((todo) => !todo.completed),
+        toggleCheckBox,
+        addNewTodo,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
+};
 
 export default TodoProvider;
