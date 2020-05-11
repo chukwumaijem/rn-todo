@@ -1,13 +1,13 @@
 import React from 'react';
-import { Header, Left, Body, Title, Right } from 'native-base';
+import { Header, Body, Title } from 'native-base';
+
+import styles from './header.styles';
 
 const HeaderComponent = () => (
   <Header hasTabs>
-    <Left />
-    <Body>
+    <Body style={styles.headerTitle}>
       <Title>Todo List</Title>
     </Body>
-    <Right />
   </Header>
 );
 

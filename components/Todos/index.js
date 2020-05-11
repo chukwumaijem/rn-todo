@@ -9,18 +9,13 @@ export const Todos = ({ todos }) => {
   const { toggleCheckBox, removeTodo } = useContext(TodoContext);
 
   const handleRemoveTodo = (id) => {
-    Alert.alert(
-      'Remove Todo',
-      'Are you sure you want to remove this todo?',
-      [
-        {
-          text: 'Cancel',
-          style: 'cancel',
-        },
-        { text: 'OK', onPress: () => removeTodo(id) },
-      ],
-      { cancelable: true }
-    );
+    Alert.alert('Remove Todo', 'Are you sure you want to remove this todo?', [
+      {
+        text: 'Cancel',
+        style: 'cancel',
+      },
+      { text: 'OK', onPress: () => removeTodo(id) },
+    ]);
   };
 
   return (
