@@ -31,6 +31,11 @@ const TodoProvider = ({ children }) => {
     setTodos(newTodos);
   };
 
+  const removeTodo = (id) => {
+    const newTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(newTodos);
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -39,6 +44,7 @@ const TodoProvider = ({ children }) => {
         pendingTodos: todos.filter((todo) => !todo.completed),
         toggleCheckBox,
         addNewTodo,
+        removeTodo,
       }}
     >
       {children}

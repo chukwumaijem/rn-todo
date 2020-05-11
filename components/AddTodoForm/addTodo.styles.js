@@ -11,5 +11,5 @@ export default StyleSheet.create({
   todoInput: {
     lineHeight: 14,
     fontSize: 14,
-  }
+  },
 });
